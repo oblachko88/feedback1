@@ -6,10 +6,11 @@
   <title>Document</title>
 </head>
 <body>
-  <form>
+  <form action="/" method="POST">
+    {% csrf_token %}
     <label for="username">Your name</label>
     <input type="text" id="username" name="username">
-    <button type="submit"">Send</button>
+    <button type="submit">Send</button>
   </form>
 </body>
 </html>
