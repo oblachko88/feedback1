@@ -11,8 +11,7 @@
     {% if has_error %}
       <p>This form is invalid - please enter a valid username.</p>
     {% endif %}
-    <label for="username">Your name</label>
-    <input type="text" id="username" name="username">
+    {{ form }}
     <button type="submit">Send</button>
   </form>
 </body>
