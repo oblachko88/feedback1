@@ -7,9 +7,9 @@ from .forms import ReviewForm
 def review(request):
   if request.method == 'POST':
     form = ReviewForm(request.POST)
-    
+
     if form.is_valid():
-      print(form.cleaned_data)
+      review = Review(user_name=form.cleaned_data['user_name'])
       return HttpResponseRedirect("/thank-you")
 
   else:
