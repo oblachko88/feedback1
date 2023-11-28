@@ -3,27 +3,18 @@ from django.shortcuts import HttpResponseRedirect
 from django.views import View
 from django.views.generic.base import TemplateView
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import FormView
+from django.views.generic.edit import CreateView
 
 from .forms import ReviewForm
 from .models import Review
 # Create your views here.
 
 
-class ReviewView(FormView):
+class ReviewView(CreateView):
+  model = Review
   form_class = ReviewForm
   template_name = "reviews/review.html"
-
-  # def post(self, request):
-  #   form = ReviewForm(request.POST)
-
-  #   if form.is_valid():
-  #     form.save()
-  #     return HttpResponseRedirect("/thank-you")
-
-  #   return render(request, "reviews/review.html", {
-  #     "form": form
-  #   })
+  success_url = "/thank-you"
 
 
 class ThankYouView(TemplateView):
@@ -42,8 +33,7 @@ class ReviewsListView(ListView):
 
   def get_queryset(self):
     base_query = super().get_queryset()
-    data = base_query.filter(rating__gt=4)
-    return data
+    return base_query
 
 
 class SingleReviewView(DetailView):
