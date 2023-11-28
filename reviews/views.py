@@ -39,4 +39,3 @@ class ReviewsListView(ListView):
 class SingleReviewView(DetailView):
   template_name = "reviews/single_review.html"
   model = Review
-
