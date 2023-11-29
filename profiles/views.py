@@ -16,10 +16,12 @@ class CreateProfileView(CreateView):
     success_url = "/profiles"
 
 
+
 class ProfilesView(ListView):
     model = UserProfile
     template_name = "profiles/user_profiles.html"
     context_object_name = "profiles"
+
 
 
 # class CreateProfileView(View):
